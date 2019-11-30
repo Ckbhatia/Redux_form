@@ -4,6 +4,7 @@ const path = require("path");
 const logger = require("morgan");
 
 const app = express();
+const indexRouter = require("./routes/index");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -42,6 +43,9 @@ mongoose.connect(
 );
 
 mongoose.set("useCreateIndex", true);
+
+// Routes
+app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
