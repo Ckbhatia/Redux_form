@@ -12,4 +12,15 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// Get
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.find({});
+    if (!users) res.json({ message: "No users found", status: "failed" });
+    res.json({ users, status: "failed" });
+  } catch (error) {
+    res.json({ message: "There's an error", status: "failed" });
+  }
+});
+
 module.exports = router;
