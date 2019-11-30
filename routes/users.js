@@ -30,9 +30,20 @@ router.put("/:username", async (req, res) => {
     const user = await User.findOneAndUpdate({ name: username }, req.body, {
       new: true
     });
-    console.log(user, "user");
     if (!user) res.json({ message: "No user found", status: "failed" });
-    res.json({ user, status: "failed" });
+    res.json({ user, status: "success" });
+  } catch (error) {
+    res.status(400).json({ message: "There's an error", status: "failed" });
+  }
+});
+
+// Delete
+router.delete("/:username", async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await User.findOneAndDelete({ name: username });
+    if (!user) res.json({ message: "No user found", status: "failed" });
+    res.json({ message: "User deleted successfully", status: "success" });
   } catch (error) {
     res.status(400).json({ message: "There's an error", status: "failed" });
   }
