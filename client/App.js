@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
+import Home from "./components/Home";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="app-container">
-        <h1>Hello world</h1>
-      </div>
-    );
-  }
+function App(props) {
+  return (
+    <Switch>
+      {/* NOTE: The first route is temporary solution, check it */}
+      <Route exact path="/" render={() => props.history.push("/users")} />
+      <Route path="/users" component={Home} />
+    </Switch>
+  );
 }
 
-export default App;
+export default withRouter(App);
