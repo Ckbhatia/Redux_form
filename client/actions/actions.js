@@ -6,9 +6,17 @@ import {
   DELETE_USER,
   UPDATE_USER
 } from "./types";
+import axios from "axios";
 
 export const getUsers = () => {
-  /* TODO: Add fetch users funtionality
-   * Dispatch the action whenever fetch get done etc.
-   */
+  return async dispatch => {
+    try {
+      dispatch({ type: FETCHING_STARTED });
+      const res = await axios.get("http://localhost:3000/api/v1/users");
+      dispatch({ type: GET_USERS, value: res.data.users });
+    } catch (err) {
+      dispatch({ type: SET_ERROR });
+      console.error(err);
+    }
+  };
 };
