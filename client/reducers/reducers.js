@@ -32,7 +32,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     }
     case GET_USERS: {
       return {
-        // TODO: Add values to update the state
+        ...state,
+        users: action.value,
+        isFetching: false
       };
     }
     case REGISTER_USER: {
