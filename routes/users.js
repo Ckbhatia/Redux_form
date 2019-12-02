@@ -17,7 +17,19 @@ router.get("/", async (req, res) => {
   try {
     const users = await User.find({});
     if (!users) res.json({ message: "No users found", status: "failed" });
-    res.json({ users, status: "failed" });
+    res.json({ users, status: "success" });
+  } catch (error) {
+    res.status(400).json({ message: "There's an error", status: "failed" });
+  }
+});
+
+// Get user
+router.get("/:username", async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await User.find({ name: username });
+    if (!user) res.json({ message: "No user found", status: "failed" });
+    res.json({ user, status: "success" });
   } catch (error) {
     res.status(400).json({ message: "There's an error", status: "failed" });
   }
