@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getUsers, deleteUser } from "../actions/actions";
 import Loader from "./Loader";
 
@@ -32,6 +33,14 @@ class Home extends Component {
                         <span className="user-email">{user.email}</span>
                         <button className="delete-btn" data-key={user.name}>
                           delete
+                        </button>
+                        <button className="edit-btn">
+                          <Link
+                            to={`/users/edit/${user.name}`}
+                            className="edit-link"
+                          >
+                            Edit
+                          </Link>
                         </button>
                       </div>
                     </li>
