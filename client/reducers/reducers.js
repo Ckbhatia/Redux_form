@@ -55,7 +55,10 @@ const reducer = (state = INITIAL_STATE, action) => {
     }
     case UPDATE_USER: {
       return {
-        // TODO: Add functionality
+        ...state,
+        users: state.users.map(user =>
+          user.name === action.value.name ? action.value : user
+        )
       };
     }
     case DELETE_USER:
