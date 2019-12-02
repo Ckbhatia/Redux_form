@@ -2,6 +2,8 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Home from "./components/Home";
 import RegisterForm from "./components/RegisterForm";
+import EditForm from "./components/EditForm";
+import "./App.scss";
 
 function App(props) {
   return (
@@ -10,6 +12,7 @@ function App(props) {
       <Route exact path="/" render={() => props.history.push("/users")} />
       <Route exact path="/users" component={Home} />
       <Route exact path="/users/register" component={RegisterForm} />
+      <Route path="/users/edit/:username" component={EditForm} />
     </Switch>
   );
 }
