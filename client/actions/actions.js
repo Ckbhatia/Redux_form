@@ -53,6 +53,22 @@ export const getUser = username => {
   };
 };
 
+export const updateUser = (username, value) => {
+  return async dispatch => {
+    try {
+      dispatch({ type: FETCHING_STARTED });
+      const res = await axios.put(
+        `http://localhost:3000/api/v1/users/${username}`,
+        value
+      );
+      dispatch({ type: UPDATE_USER, value: res.data.user });
+    } catch (err) {
+      dispatch({ type: SET_ERROR });
+      console.error(err);
+    }
+  };
+};
+
 export const deleteUser = username => {
   return async dispatch => {
     try {
