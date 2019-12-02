@@ -41,7 +41,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     }
     case GET_USER: {
       return {
-        // TODO: Add functionality
+        ...state,
+        current_user: action.value,
+        isFetching: false
       };
     }
     case REGISTER_USER: {
