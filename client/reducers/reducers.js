@@ -60,7 +60,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     }
     case DELETE_USER:
       return {
-        // TODO: Add functionality
+        ...state,
+        users: state.users.filter(user => user.name !== action.value),
+        isFetching: false
       };
     default:
       return state;
