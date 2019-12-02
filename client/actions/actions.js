@@ -37,3 +37,18 @@ export const registerUser = value => {
     }
   };
 };
+
+export const getUser = username => {
+  return async dispatch => {
+    try {
+      dispatch({ type: FETCHING_STARTED });
+      const res = await axios.get(
+        `http://localhost:3000/api/v1/users/${username}`
+      );
+      dispatch({ type: GET_USER, value: res.data.user[0] });
+    } catch (err) {
+      dispatch({ type: SET_ERROR });
+      console.error(err);
+    }
+  };
+};
