@@ -1,4 +1,44 @@
+// Home
+.main-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+//
+.list-container {
+  list-style: none;
+
+  .item-container {
+    display: grid;
+    grid-template-columns: 14rem 18rem 4rem;
+    grid-template-rows: 2rem 1rem;
+    .user-name {
+      font-size: 1.4rem;
+    }
+    .user-email {
+      font-size: 1.4rem;
+    }
+    .delete-btn {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+      &:active {
+        background-color: rgb(136, 136, 136);
+      }
+    }
+  }
+}
+
 // The loader
+.loader-container {
+  display: flex;
+  justify-content: center;
+}
 
 .lds-hourglass {
   display: inline-block;
