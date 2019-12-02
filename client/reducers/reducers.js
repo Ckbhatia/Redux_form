@@ -1,5 +1,6 @@
 import {
   GET_USERS,
+  GET_USER,
   UPDATE_USER,
   REGISTER_USER,
   DELETE_USER,
@@ -9,13 +10,14 @@ import {
 
 const INITIAL_STATE = {
   users: [],
+  current_user: null,
   isFetching: false,
   isError: false
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   // TODO: Remove this console log
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case FETCHING_STARTED: {
       return {
@@ -37,17 +39,26 @@ const reducer = (state = INITIAL_STATE, action) => {
         isFetching: false
       };
     }
+    case GET_USER: {
+      return {
+        // TODO: Add functionality
+      };
+    }
     case REGISTER_USER: {
-      // TODO: Add values to update the state
+      return {
+        ...state,
+        users: state.users.concat(action.value),
+        isFetching: false
+      };
     }
     case UPDATE_USER: {
       return {
-        // TODO: Add values to update the state
+        // TODO: Add functionality
       };
     }
     case DELETE_USER:
       return {
-        // TODO: Add values to update the state
+        // TODO: Add functionality
       };
     default:
       return state;
